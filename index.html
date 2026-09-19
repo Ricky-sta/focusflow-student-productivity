@@ -3,22 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FocusFlow - Student Productivity</title>
+
+    <title>FocusFlow - Student Productivity Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <h1>FocusFlow</h1>
+    <main class="app">
 
-    <p>Student Productivity Dashboard</p>
+        <section class="hero">
+            <p class="eyebrow">STUDENT PRODUCTIVITY</p>
 
-    <h2>Today's Tasks</h2>
+            <h1>FocusFlow</h1>
 
-    <input type="text" id="taskInput" placeholder="Enter a task">
+            <p class="subtitle">
+                Plan your day, complete your tasks, and keep your progress moving.
+            </p>
+        </section>
 
-    <button id="addTaskBtn">Add Task</button>
+        <section class="stats-grid">
 
-    <ul id="taskList"></ul>
+            <div class="stat-card">
+                <span class="stat-label">Total Tasks</span>
+                <strong id="totalTasks">0</strong>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-label">Completed</span>
+                <strong id="completedTasks">0</strong>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-label">Progress</span>
+                <strong id="progressText">0%</strong>
+            </div>
+
+        </section>
+
+        <section class="progress-card">
+
+            <div class="progress-header">
+                <h2>Today's Progress</h2>
+                <span id="progressLabel">0%</span>
+            </div>
+
+            <div class="progress-bar">
+                <div id="progressFill" class="progress-fill"></div>
+            </div>
+
+        </section>
+
+        <section class="task-card">
+
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">TASK MANAGER</p>
+                    <h2>Today's Tasks</h2>
+                </div>
+            </div>
+
+            <div class="task-form">
+
+                <input
+                    type="text"
+                    id="taskInput"
+                    placeholder="What do you need to accomplish?"
+                    maxlength="100"
+                >
+
+                <button id="addTaskBtn">
+                    Add Task
+                </button>
+
+            </div>
+
+            <ul id="taskList"></ul>
+
+            <div id="emptyState" class="empty-state">
+                <p>No tasks yet.</p>
+                <span>Add your first task and start your day.</span>
+            </div>
+
+        </section>
+
+        <footer>
+            <p>FocusFlow • Built with HTML, CSS & JavaScript</p>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
 
 </body>
 </html>
