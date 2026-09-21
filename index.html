@@ -1,100 +1,1216 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>FocusFlow - Student Productivity Dashboard</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="style.css">
+    <meta
+        name="description"
+        content="FocusFlow is a personal productivity planner for managing tasks, goals, milestones, priorities, deadlines, and progress."
+    >
+
+    <meta
+        name="theme-color"
+        content="#111827"
+    >
+
+    <title>
+        FocusFlow - Personal Productivity Planner
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
+
 
 <body>
 
+
+    <!-- =====================================================
+         MAIN APPLICATION
+         ===================================================== -->
+
     <main class="app">
+        <!-- =====================================================
+     AUTHENTICATION
+     ===================================================== -->
 
-        <section class="hero">
-            <p class="eyebrow">STUDENT PRODUCTIVITY</p>
+<section
+    id="authSection"
+    class="auth-card"
+    aria-labelledby="authHeading"
+>
 
-            <h1>FocusFlow</h1>
+    <div class="section-heading">
+
+        <div>
+
+            <p class="eyebrow">
+                WELCOME TO FOCUSFLOW
+            </p>
+
+            <h2 id="authHeading">
+                Create Your Account
+            </h2>
+
+            <p class="section-description">
+                Sign up or log in to keep your productivity data connected to your account.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- EMAIL -->
+
+    <div class="form-group">
+
+        <label for="authEmail">
+            Email
+        </label>
+
+        <input
+            type="email"
+            id="authEmail"
+            placeholder="you@example.com"
+            autocomplete="email"
+        >
+
+    </div>
+
+
+    <!-- PASSWORD -->
+
+    <div class="form-group">
+
+        <label for="authPassword">
+            Password
+        </label>
+
+        <input
+            type="password"
+            id="authPassword"
+            placeholder="Enter your password"
+            autocomplete="current-password"
+        >
+
+    </div>
+
+
+    <!-- AUTH MESSAGE -->
+
+    <p
+        id="authMessage"
+        class="auth-message"
+        aria-live="polite"
+    ></p>
+
+
+    <!-- BUTTONS -->
+
+    <div class="task-actions">
+
+        <button
+            id="loginBtn"
+            type="button"
+        >
+            Login
+        </button>
+
+        <button
+            id="signupBtn"
+            type="button"
+        >
+            Create Account
+        </button>
+
+    </div>
+
+</section>
+
+<div id="dashboard"> 
+        <!-- =================================================
+             HERO SECTION
+             ================================================= -->
+
+        <section
+            class="hero"
+            aria-labelledby="appTitle"
+        >
+
+            <p class="eyebrow">
+                PERSONAL PRODUCTIVITY
+            </p>
+
+            <h1 id="appTitle">
+                FocusFlow
+            </h1>
 
             <p class="subtitle">
-                Plan your day, complete your tasks, and keep your progress moving.
+                Plan your life, manage your goals, and keep your progress moving.
             </p>
-        </section>
-
-        <section class="stats-grid">
-
-            <div class="stat-card">
-                <span class="stat-label">Total Tasks</span>
-                <strong id="totalTasks">0</strong>
-            </div>
-
-            <div class="stat-card">
-                <span class="stat-label">Completed</span>
-                <strong id="completedTasks">0</strong>
-            </div>
-
-            <div class="stat-card">
-                <span class="stat-label">Progress</span>
-                <strong id="progressText">0%</strong>
-            </div>
 
         </section>
 
-        <section class="progress-card">
+
+        <!-- =================================================
+             STATISTICS
+             ================================================= -->
+
+        <section
+            class="stats-grid"
+            aria-label="Productivity statistics"
+        >
+
+
+            <!-- TOTAL TASKS -->
+
+            <div class="stat-card">
+
+                <span class="stat-label">
+                    Total Tasks
+                </span>
+
+                <strong id="totalTasks">
+                    0
+                </strong>
+
+            </div>
+
+
+            <!-- COMPLETED TASKS -->
+
+            <div class="stat-card">
+
+                <span class="stat-label">
+                    Completed
+                </span>
+
+                <strong id="completedTasks">
+                    0
+                </strong>
+
+            </div>
+
+
+            <!-- OVERALL PROGRESS -->
+
+            <div class="stat-card">
+
+                <span class="stat-label">
+                    Progress
+                </span>
+
+                <strong id="progressText">
+                    0%
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PROGRESS SECTION
+             ================================================= -->
+
+        <section
+            class="progress-card"
+            aria-labelledby="progressHeading"
+        >
 
             <div class="progress-header">
-                <h2>Today's Progress</h2>
-                <span id="progressLabel">0%</span>
+
+                <h2 id="progressHeading">
+                    Overall Progress
+                </h2>
+
+                <span
+                    id="progressLabel"
+                    aria-live="polite"
+                >
+                    0%
+                </span>
+
             </div>
 
-            <div class="progress-bar">
-                <div id="progressFill" class="progress-fill"></div>
+
+            <div
+                class="progress-bar"
+                role="progressbar"
+                aria-label="Overall task completion progress"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+            >
+
+                <div
+                    id="progressFill"
+                    class="progress-fill"
+                ></div>
+
             </div>
 
         </section>
 
-        <section class="task-card">
+
+        <!-- =================================================
+             TASK MANAGER
+             ================================================= -->
+
+        <section
+            class="task-card"
+            aria-labelledby="taskManagerHeading"
+        >
+
+
+            <!-- SECTION HEADER -->
 
             <div class="section-heading">
+
                 <div>
-                    <p class="eyebrow">TASK MANAGER</p>
-                    <h2>Today's Tasks</h2>
+
+                    <p class="eyebrow">
+                        TASK MANAGER
+                    </p>
+
+                    <h2 id="taskManagerHeading">
+                        Plan Your Task
+                    </h2>
+
+                    <p class="section-description">
+                        Add tasks, connect them to goals and milestones, and track completion.
+                    </p>
+
                 </div>
+
             </div>
+
+
+            <!-- =================================================
+                 TASK TITLE
+                 ================================================= -->
 
             <div class="task-form">
 
-                <input
-                    type="text"
-                    id="taskInput"
-                    placeholder="What do you need to accomplish?"
-                    maxlength="100"
-                >
+                <div class="form-group">
 
-                <button id="addTaskBtn">
+                    <label for="taskInput">
+                        Task
+                    </label>
+
+                    <input
+                        type="text"
+                        id="taskInput"
+                        placeholder="What do you need to accomplish?"
+                        maxlength="100"
+                        autocomplete="off"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 TASK OPTIONS
+                 ================================================= -->
+
+            <div class="task-options">
+
+
+                <!-- =============================================
+                     GOAL
+                     ============================================= -->
+
+                <div class="form-group">
+
+                    <label for="taskGoal">
+                        Goal
+                    </label>
+
+                    <select id="taskGoal">
+
+                        <option value="">
+                            No Goal
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- =============================================
+                     MILESTONE
+                     ============================================= -->
+
+                <div class="form-group">
+
+                    <label for="taskMilestone">
+                        Milestone
+                    </label>
+
+                    <select id="taskMilestone">
+
+                        <option value="">
+                            No Milestone
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- =============================================
+                     CATEGORY
+                     ============================================= -->
+
+                <div class="form-group">
+
+                    <label for="taskCategory">
+                        Category
+                    </label>
+
+                    <select id="taskCategory">
+
+                        <option value="General">
+                            General
+                        </option>
+
+                        <option value="Study">
+                            Study
+                        </option>
+
+                        <option value="Fitness">
+                            Fitness
+                        </option>
+
+                        <option value="Skills">
+                            Skills
+                        </option>
+
+                        <option value="Home">
+                            Home
+                        </option>
+
+                        <option value="Travel">
+                            Travel
+                        </option>
+
+                        <option value="Career">
+                            Career
+                        </option>
+
+                        <option value="Personal">
+                            Personal
+                        </option>
+
+                        <option value="Projects">
+                            Projects
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- =============================================
+                     PRIORITY
+                     ============================================= -->
+
+                <div class="form-group">
+
+                    <label for="taskPriority">
+                        Priority
+                    </label>
+
+                    <select id="taskPriority">
+
+                        <option value="Low">
+                            Low
+                        </option>
+
+                        <option
+                            value="Medium"
+                            selected
+                        >
+                            Medium
+                        </option>
+
+                        <option value="High">
+                            High
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- =============================================
+                     DUE DATE
+                     ============================================= -->
+
+                <div class="form-group">
+
+                    <label for="taskDate">
+                        Due Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="taskDate"
+                    >
+
+                </div>
+
+
+                <!-- =============================================
+                     DUE TIME
+                     ============================================= -->
+
+                <div class="form-group">
+
+                    <label for="taskTime">
+                        Due Time
+                    </label>
+
+                    <input
+                        type="time"
+                        id="taskTime"
+                    >
+
+                </div>
+
+
+                <!-- =============================================
+                     REMINDER
+                     ============================================= -->
+
+                <div class="form-group">
+
+                    <label for="taskReminder">
+                        Reminder
+                    </label>
+
+                    <select id="taskReminder">
+
+                        <option value="None">
+                            No Reminder
+                        </option>
+
+                        <option value="10 minutes before">
+                            10 minutes before
+                        </option>
+
+                        <option value="30 minutes before">
+                            30 minutes before
+                        </option>
+
+                        <option value="1 hour before">
+                            1 hour before
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- =============================================
+                     REPEAT
+                     ============================================= -->
+
+                <div class="form-group">
+
+                    <label for="taskRepeat">
+                        Repeat
+                    </label>
+
+                    <select id="taskRepeat">
+
+                        <option value="None">
+                            Does not repeat
+                        </option>
+
+                        <option value="Daily">
+                            Daily
+                        </option>
+
+                        <option value="Weekly">
+                            Weekly
+                        </option>
+
+                        <option value="Weekdays">
+                            Weekdays
+                        </option>
+
+                        <option value="Monthly">
+                            Monthly
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 TASK NOTES
+                 ================================================= -->
+
+            <div class="form-group notes-group">
+
+                <label for="taskNotes">
+                    Notes
+                </label>
+
+                <textarea
+                    id="taskNotes"
+                    placeholder="Add notes, instructions, links, or anything else..."
+                    maxlength="500"
+                    rows="4"
+                ></textarea>
+
+            </div>
+
+
+            <!-- =================================================
+                 ADD TASK BUTTON
+                 ================================================= -->
+
+            <div class="task-actions">
+
+                <button
+                    id="addTaskBtn"
+                    type="button"
+                >
                     Add Task
                 </button>
 
             </div>
 
-            <ul id="taskList"></ul>
 
-            <div id="emptyState" class="empty-state">
-                <p>No tasks yet.</p>
-                <span>Add your first task and start your day.</span>
+            <!-- =================================================
+                 TASK LIST
+                 ================================================= -->
+
+            <ul
+                id="taskList"
+                aria-live="polite"
+                aria-label="Task list"
+            ></ul>
+
+
+            <!-- =================================================
+                 TASK EMPTY STATE
+                 ================================================= -->
+
+            <div
+                id="emptyState"
+                class="empty-state"
+            >
+
+                <p>
+                    No tasks yet.
+                </p>
+
+                <span>
+                    Add your first task and start planning your day.
+                </span>
+
             </div>
 
         </section>
 
-        <footer>
-            <p>FocusFlow • Built with HTML, CSS & JavaScript</p>
-        </footer>
+
+        <!-- =====================================================
+             GOAL PLANNER
+             ===================================================== -->
+
+        <section
+            class="goal-card"
+            aria-labelledby="goalPlannerHeading"
+        >
+
+
+            <!-- SECTION HEADER -->
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        GOAL PLANNER
+                    </p>
+
+                    <h2 id="goalPlannerHeading">
+                        Create a Goal
+                    </h2>
+
+                    <p class="section-description">
+                        Turn something you want to achieve into a structured plan.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 GOAL NAME
+                 ================================================= -->
+
+            <div class="form-group">
+
+                <label for="goalName">
+                    Goal Name
+                </label>
+
+                <input
+                    type="text"
+                    id="goalName"
+                    placeholder="Example: Learn Python in 30 days"
+                    maxlength="100"
+                >
+
+            </div>
+
+
+            <!-- =================================================
+                 GOAL DESCRIPTION
+                 ================================================= -->
+
+            <div class="form-group goal-description">
+
+                <label for="goalDescription">
+                    What do you want to achieve?
+                </label>
+
+                <textarea
+                    id="goalDescription"
+                    placeholder="Describe your goal..."
+                    maxlength="500"
+                    rows="4"
+                ></textarea>
+
+            </div>
+
+
+            <!-- =================================================
+                 GOAL OPTIONS
+                 ================================================= -->
+
+            <div class="goal-options">
+
+
+                <!-- =============================================
+                     GOAL CATEGORY
+                     ============================================= -->
+
+                <div class="form-group">
+
+                    <label for="goalCategory">
+                        Category
+                    </label>
+
+                    <select id="goalCategory">
+
+                        <option value="Study">
+                            Study
+                        </option>
+
+                        <option value="Fitness">
+                            Fitness
+                        </option>
+
+                        <option value="Skills">
+                            Skills
+                        </option>
+
+                        <option value="Career">
+                            Career
+                        </option>
+
+                        <option value="Travel">
+                            Travel
+                        </option>
+
+                        <option value="Home">
+                            Home
+                        </option>
+
+                        <option value="Personal">
+                            Personal
+                        </option>
+
+                        <option value="Projects">
+                            Projects
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- =============================================
+                     GOAL DEADLINE
+                     ============================================= -->
+
+                <div class="form-group">
+
+                    <label for="goalDeadline">
+                        Deadline
+                    </label>
+
+                    <input
+                        type="date"
+                        id="goalDeadline"
+                    >
+
+                </div>
+
+
+                <!-- =============================================
+                     AVAILABLE TIME
+                     ============================================= -->
+
+                <div class="form-group">
+
+                    <label for="goalTime">
+                        Available Time
+                    </label>
+
+                    <select id="goalTime">
+
+                        <option value="15 minutes">
+                            15 minutes/day
+                        </option>
+
+                        <option value="30 minutes">
+                            30 minutes/day
+                        </option>
+
+                        <option
+                            value="1 hour"
+                            selected
+                        >
+                            1 hour/day
+                        </option>
+
+                        <option value="2 hours">
+                            2 hours/day
+                        </option>
+
+                        <option value="3+ hours">
+                            3+ hours/day
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- =============================================
+                     CURRENT LEVEL
+                     ============================================= -->
+
+                <div class="form-group">
+
+                    <label for="goalLevel">
+                        Current Level
+                    </label>
+
+                    <select id="goalLevel">
+
+                        <option value="Beginner">
+                            Beginner
+                        </option>
+
+                        <option value="Intermediate">
+                            Intermediate
+                        </option>
+
+                        <option value="Advanced">
+                            Advanced
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 PREFERRED DAYS
+                 ================================================= -->
+
+            <div class="form-group preferred-days">
+
+                <label>
+                    Preferred Days
+                </label>
+
+
+                <div class="day-options">
+
+
+                    <label class="day-option">
+
+                        <input
+                            type="checkbox"
+                            value="Monday"
+                        >
+
+                        <span>
+                            Mon
+                        </span>
+
+                    </label>
+
+
+                    <label class="day-option">
+
+                        <input
+                            type="checkbox"
+                            value="Tuesday"
+                        >
+
+                        <span>
+                            Tue
+                        </span>
+
+                    </label>
+
+
+                    <label class="day-option">
+
+                        <input
+                            type="checkbox"
+                            value="Wednesday"
+                        >
+
+                        <span>
+                            Wed
+                        </span>
+
+                    </label>
+
+
+                    <label class="day-option">
+
+                        <input
+                            type="checkbox"
+                            value="Thursday"
+                        >
+
+                        <span>
+                            Thu
+                        </span>
+
+                    </label>
+
+
+                    <label class="day-option">
+
+                        <input
+                            type="checkbox"
+                            value="Friday"
+                        >
+
+                        <span>
+                            Fri
+                        </span>
+
+                    </label>
+
+
+                    <label class="day-option">
+
+                        <input
+                            type="checkbox"
+                            value="Saturday"
+                        >
+
+                        <span>
+                            Sat
+                        </span>
+
+                    </label>
+
+
+                    <label class="day-option">
+
+                        <input
+                            type="checkbox"
+                            value="Sunday"
+                        >
+
+                        <span>
+                            Sun
+                        </span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 CREATE GOAL
+                 ================================================= -->
+
+            <div class="goal-actions">
+
+                <button
+                    id="createGoalBtn"
+                    type="button"
+                >
+                    Create Goal
+                </button>
+
+            </div>
+
+
+            <!-- =================================================
+                 GOAL LIST
+                 ================================================= -->
+
+            <div
+                id="goalList"
+                class="goal-list"
+                aria-live="polite"
+                aria-label="Goal list"
+            ></div>
+
+
+            <!-- =================================================
+                 GOAL EMPTY STATE
+                 ================================================= -->
+
+            <div
+                id="goalEmptyState"
+                class="empty-state"
+            >
+
+                <p>
+                    No goals yet.
+                </p>
+
+                <span>
+                    Create your first goal and start building your plan.
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             MILESTONE PLANNER
+             ===================================================== -->
+
+        <section
+            class="milestone-card"
+            aria-labelledby="milestonePlannerHeading"
+        >
+
+
+            <!-- SECTION HEADER -->
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        MILESTONE PLANNER
+                    </p>
+
+                    <h2 id="milestonePlannerHeading">
+                        Build Your Goal Step by Step
+                    </h2>
+
+                    <p class="section-description">
+                        Break a big goal into smaller achievements.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 SELECT GOAL
+                 ================================================= -->
+
+            <div class="form-group">
+
+                <label for="milestoneGoal">
+                    Goal
+                </label>
+
+                <select id="milestoneGoal">
+
+                    <option value="">
+                        Select a goal
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- =================================================
+                 MILESTONE NAME
+                 ================================================= -->
+
+            <div class="form-group milestone-name">
+
+                <label for="milestoneName">
+                    Milestone Name
+                </label>
+
+                <input
+                    type="text"
+                    id="milestoneName"
+                    placeholder="Example: Learn Python basics"
+                    maxlength="100"
+                >
+
+            </div>
+
+
+            <!-- =================================================
+                 MILESTONE DESCRIPTION
+                 ================================================= -->
+
+            <div class="form-group milestone-description">
+
+                <label for="milestoneDescription">
+                    Description
+                </label>
+
+                <textarea
+                    id="milestoneDescription"
+                    placeholder="What should be achieved in this milestone?"
+                    maxlength="300"
+                    rows="4"
+                ></textarea>
+
+            </div>
+
+
+            <!-- =================================================
+                 MILESTONE DEADLINE
+                 ================================================= -->
+
+            <div class="form-group milestone-deadline">
+
+                <label for="milestoneDeadline">
+                    Target Date
+                </label>
+
+                <input
+                    type="date"
+                    id="milestoneDeadline"
+                >
+
+            </div>
+
+
+            <!-- =================================================
+                 CREATE MILESTONE
+                 ================================================= -->
+
+            <div class="milestone-actions">
+
+                <button
+                    id="createMilestoneBtn"
+                    type="button"
+                >
+                    Add Milestone
+                </button>
+
+            </div>
+
+
+            <!-- =================================================
+                 MILESTONE LIST
+                 ================================================= -->
+
+            <div
+                id="milestoneList"
+                class="milestone-list"
+                aria-live="polite"
+                aria-label="Milestone list"
+            ></div>
+
+
+            <!-- =================================================
+                 MILESTONE EMPTY STATE
+                 ================================================= -->
+
+            <div
+                id="milestoneEmptyState"
+                class="empty-state"
+            >
+
+                <p>
+                    No milestones yet.
+                </p>
+
+                <span>
+                    Choose a goal and add your first milestone
+                </span>
+
+            </div>
+
+       </section>
+
+
+</div>
+
+
+<footer>
+
+    <p>
+        FocusFlow • Built with HTML, CSS &amp; JavaScript
+    </p>
+
+</footer>
 
     </main>
 
-    <script src="script.js"></script>
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="script.js"></script>
+<script src="auth.js"></script>
+<script src="cloud-sync.js"></script>
 
 </body>
-</html>
+
+</html>   

@@ -1,7 +1,27 @@
+/* =========================================================
+   FOCUSFLOW
+   PERSONAL PRODUCTIVITY PLANNER
+   COMPLETE STYLE SHEET
+   ========================================================= */
+
+
+/* =========================================================
+   GLOBAL RESET
+   ========================================================= */
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+
+/* =========================================================
+   ROOT / BODY
+   ========================================================= */
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -9,13 +29,24 @@ body {
     background: #f4f7fb;
     color: #1f2937;
     min-height: 100vh;
+    line-height: 1.5;
 }
+
+
+/* =========================================================
+   MAIN APPLICATION CONTAINER
+   ========================================================= */
 
 .app {
     width: min(100% - 32px, 900px);
     margin: 0 auto;
     padding: 50px 0;
 }
+
+
+/* =========================================================
+   HERO SECTION
+   ========================================================= */
 
 .hero {
     background: linear-gradient(135deg, #1d4ed8, #2563eb);
@@ -24,6 +55,10 @@ body {
     border-radius: 24px;
     margin-bottom: 24px;
     box-shadow: 0 15px 35px rgba(37, 99, 235, 0.18);
+}
+
+.hero .eyebrow {
+    color: white;
 }
 
 .eyebrow {
@@ -36,6 +71,7 @@ body {
 
 .hero h1 {
     font-size: clamp(2.4rem, 6vw, 4rem);
+    line-height: 1.05;
     margin-bottom: 10px;
 }
 
@@ -46,6 +82,11 @@ body {
     opacity: 0.9;
 }
 
+
+/* =========================================================
+   STATISTICS GRID
+   ========================================================= */
+
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -54,11 +95,19 @@ body {
 }
 
 .stat-card {
-    background: white;
+    background: #ffffff;
     padding: 24px;
     border-radius: 18px;
     box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
     border: 1px solid #e5e7eb;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.09);
 }
 
 .stat-label {
@@ -69,13 +118,19 @@ body {
 }
 
 .stat-card strong {
+    display: block;
     font-size: 2rem;
+    line-height: 1;
     color: #111827;
 }
 
-.progress-card,
-.task-card {
-    background: white;
+
+/* =========================================================
+   PROGRESS CARD
+   ========================================================= */
+
+.progress-card {
+    background: #ffffff;
     border: 1px solid #e5e7eb;
     border-radius: 20px;
     padding: 28px;
@@ -87,11 +142,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 16px;
     margin-bottom: 14px;
 }
 
 .progress-header h2 {
     font-size: 1.15rem;
+    color: #111827;
 }
 
 #progressLabel {
@@ -115,73 +172,251 @@ body {
     transition: width 0.3s ease;
 }
 
+
+/* =========================================================
+   GENERAL SECTION CARDS
+   ========================================================= */
+
+.task-card,
+.goal-card,
+.milestone-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 28px;
+    margin-bottom: 24px;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
+}
+
+.goal-card,
+.milestone-card {
+    margin-top: 0;
+}
+
+
+/* =========================================================
+   SECTION HEADINGS
+   ========================================================= */
+
 .section-heading {
     margin-bottom: 20px;
 }
 
 .section-heading h2 {
     font-size: 1.6rem;
+    line-height: 1.25;
+    color: #111827;
 }
 
-.task-form {
+.section-description {
+    margin-top: 6px;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   FORM GROUP
+   ========================================================= */
+
+.form-group {
     display: flex;
-    gap: 12px;
-    margin-bottom: 22px;
+    flex-direction: column;
+    gap: 7px;
 }
 
-.task-form input {
-    flex: 1;
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+
+/* =========================================================
+   GENERAL FORM CONTROLS
+   ========================================================= */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
     border: 1px solid #d1d5db;
-    border-radius: 12px;
-    padding: 14px 16px;
-    font-size: 1rem;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #1f2937;
+    font-size: 14px;
+    font-family: inherit;
     outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
 }
 
-.task-form input:focus {
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #9ca3af;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
     border-color: #2563eb;
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
-.task-form button {
-    border: none;
-    border-radius: 12px;
-    padding: 14px 22px;
-    background: #2563eb;
-    color: white;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: transform 0.2s, background 0.2s;
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.5;
 }
 
-.task-form button:hover {
+
+/* =========================================================
+   TASK TITLE FORM
+   ========================================================= */
+
+.task-form {
+    margin-bottom: 22px;
+}
+
+.task-form .form-group {
+    width: 100%;
+}
+
+.task-form input {
+    width: 100%;
+}
+
+
+/* =========================================================
+   TASK OPTIONS GRID
+   ========================================================= */
+
+.task-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+}
+
+
+/* =========================================================
+   TASK NOTES
+   ========================================================= */
+
+.notes-group {
+    margin-top: 18px;
+}
+
+.notes-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+
+/* =========================================================
+   TASK ACTIONS
+   ========================================================= */
+
+.task-actions {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 18px;
+}
+
+
+/* =========================================================
+   PRIMARY BUTTONS
+   ========================================================= */
+
+#addTaskBtn,
+#createGoalBtn,
+#createMilestoneBtn {
+    border: none;
+    border-radius: 12px;
+    padding: 13px 22px;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#addTaskBtn:hover,
+#createGoalBtn:hover,
+#createMilestoneBtn:hover {
     background: #1d4ed8;
     transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.18);
 }
+
+#addTaskBtn:active,
+#createGoalBtn:active,
+#createMilestoneBtn:active {
+    transform: translateY(0);
+}
+
+#addTaskBtn:focus-visible,
+#createGoalBtn:focus-visible,
+#createMilestoneBtn:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.25);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   TASK LIST
+   ========================================================= */
 
 #taskList {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
+    margin-top: 24px;
 }
+
+
+/* =========================================================
+   TASK ITEM
+   ========================================================= */
 
 .task-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    padding: 15px 16px;
+    padding: 16px;
     background: #f8fafc;
     border: 1px solid #e5e7eb;
-    border-radius: 12px;
+    border-radius: 14px;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
 }
+
+.task-item:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 5px 15px rgba(15, 23, 42, 0.05);
+}
+
+
+/* =========================================================
+   TASK CONTENT
+   ========================================================= */
 
 .task-content {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 12px;
     flex: 1;
     min-width: 0;
@@ -194,22 +429,111 @@ body {
 .task-content input[type="checkbox"] {
     width: 18px;
     height: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
     cursor: pointer;
+    accent-color: #2563eb;
 }
+
+
+/* =========================================================
+   COMPLETED TASK
+   ========================================================= */
 
 .task-content.completed span {
     text-decoration: line-through;
     color: #9ca3af;
 }
 
+
+/* =========================================================
+   TASK INFORMATION TAGS
+   ========================================================= */
+
+.task-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.task-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   PRIORITY TAGS
+   ========================================================= */
+
+.priority-low {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+.priority-medium {
+    background: #e2e8f0;
+    color: #334155;
+}
+
+.priority-high {
+    background: #cbd5e1;
+    color: #1e293b;
+}
+
+
+/* =========================================================
+   TASK NOTES DISPLAY
+   ========================================================= */
+
+.task-notes {
+    margin: 10px 0 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #64748b;
+}
+
+
+/* =========================================================
+   DELETE BUTTON
+   ========================================================= */
+
 .delete-btn {
     border: none;
     background: transparent;
     color: #ef4444;
     font-weight: 700;
+    font-size: 13px;
     cursor: pointer;
-    padding: 6px 8px;
+    padding: 7px 9px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
 }
+
+.delete-btn:hover {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+.delete-btn:focus-visible {
+    outline: 3px solid rgba(239, 68, 68, 0.18);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   EMPTY STATES
+   ========================================================= */
 
 .empty-state {
     text-align: center;
@@ -223,14 +547,363 @@ body {
     margin-bottom: 5px;
 }
 
+.empty-state span {
+    display: block;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   GOAL SECTION
+   ========================================================= */
+
+.goal-description {
+    margin-top: 18px;
+}
+
+.goal-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 18px;
+}
+
+
+/* =========================================================
+   PREFERRED DAYS
+   ========================================================= */
+
+.preferred-days {
+    margin-top: 18px;
+}
+
+.day-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.day-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border: 1px solid #d8dee9;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #475569;
+    font-size: 13px;
+    cursor: pointer;
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.day-option:hover {
+    border-color: #94a3b8;
+    background: #f8fafc;
+    transform: translateY(-1px);
+}
+
+.day-option input {
+    margin: 0;
+    cursor: pointer;
+    accent-color: #2563eb;
+}
+
+
+/* =========================================================
+   GOAL ACTIONS
+   ========================================================= */
+
+.goal-actions {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+
+/* =========================================================
+   GOAL LIST
+   ========================================================= */
+
+.goal-list {
+    display: grid;
+    gap: 14px;
+    margin-top: 24px;
+}
+
+
+/* =========================================================
+   GOAL ITEM
+   ========================================================= */
+
+.goal-item {
+    padding: 18px;
+    border: 1px solid #d8dee9;
+    border-radius: 14px;
+    background: #ffffff;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.goal-item:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+}
+
+.goal-item h3 {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.3;
+    color: #111827;
+}
+
+.goal-item p {
+    margin: 10px 0 0;
+    color: #64748b;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   GOAL META
+   ========================================================= */
+
+.goal-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.goal-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* ===============
+   GOAL PROGRESS
+
+
+.goal-progress {
+    margin-top: 16px;
+}
+
+.goal-progress-bar {
+    width: 100%;
+    height: 8px;
+    border-radius: 999px;
+    background: #e2e8f0;
+    overflow: hidden;
+}
+
+.goal-progress-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #475569, #94a3b8);
+    transition: width 0.3s ease;
+}
+
+
+/* =========================================================
+   MILESTONE SECTION
+   ========================================================= */
+
+.milestone-name,
+.milestone-description,
+.milestone-deadline {
+    margin-top: 18px;
+}
+
+
+/* =========================================================
+   MILESTONE ACTIONS
+   ========================================================= */
+
+.milestone-actions {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+
+/* =========================================================
+   MILESTONE LIST
+   ========================================================= */
+
+.milestone-list {
+    display: grid;
+    gap: 14px;
+    margin-top: 24px;
+}
+
+
+/* =========================================================
+   MILESTONE ITEM
+   ========================================================= */
+
+.milestone-item {
+    padding: 18px;
+    border: 1px solid #d8dee9;
+    border-radius: 14px;
+    background: #ffffff;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.milestone-item:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+}
+
+.milestone-item h3 {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.3;
+    color: #111827;
+}
+
+.milestone-item p {
+    margin: 8px 0 0;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   MILESTONE META
+   ========================================================= */
+
+.milestone-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.milestone-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   MILESTONE PROGRESS
+   ========================================================= */
+
+.milestone-progress {
+    margin-top: 16px;
+}
+
+.milestone-progress-bar {
+    width: 100%;
+    height: 8px;
+    border-radius: 999px;
+    background: #e2e8f0;
+    overflow: hidden;
+}
+
+.milestone-progress-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #475569, #94a3b8);
+    transition: width 0.3s ease;
+}
+
+
+/* =========================================================
+   SELECT DROPDOWN IMPROVEMENTS
+   ========================================================= */
+
+select {
+    cursor: pointer;
+}
+
+select option {
+    color: #1f2937;
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   DATE AND TIME INPUTS
+   ========================================================= */
+
+input[type="date"],
+input[type="time"] {
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   CHECKBOX ACCESSIBILITY
+   ========================================================= */
+
+input[type="checkbox"]:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.2);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   FORM DISABLED STATE
+   ========================================================= */
+
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
 footer {
     text-align: center;
     color: #9ca3af;
     font-size: 0.85rem;
-    padding: 10px;
+    padding: 10px 10px 20px;
 }
 
+footer p {
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   TABLET
+   ========================================================= */
+
 @media (max-width: 700px) {
+
     .app {
         width: min(100% - 20px, 900px);
         padding: 25px 0;
@@ -238,17 +911,198 @@ footer {
 
     .hero {
         padding: 30px 24px;
+        border-radius: 20px;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.2rem, 12vw, 3.2rem);
+    }
+
+    .subtitle {
+        font-size: 0.98rem;
     }
 
     .stats-grid {
         grid-template-columns: 1fr;
+        gap: 12px;
     }
 
-    .task-form {
-        flex-direction: column;
+    .stat-card {
+        padding: 20px;
     }
 
-    .task-form button {
+    .progress-card,
+    .task-card,
+    .goal-card,
+    .milestone-card {
+        padding: 22px;
+        border-radius: 18px;
+    }
+
+    .task-options {
+        grid-template-columns: 1fr;
+    }
+
+    .goal-options {
+        grid-template-columns: 1fr;
+    }
+
+    .day-options {
+        gap: 6px;
+    }
+
+    .task-item {
+        align-items: flex-start;
+    }
+
+    .section-heading h2 {
+        font-size: 1.4rem;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .app {
+        width: min(100% - 16px, 900px);
+        padding: 16px 0;
+    }
+
+    .hero {
+        padding: 26px 20px;
+        border-radius: 18px;
+        margin-bottom: 16px;
+    }
+
+    .hero h1 {
+        font-size: 2.35rem;
+    }
+
+    .subtitle {
+        font-size: 0.92rem;
+    }
+
+    .eyebrow {
+        font-size: 0.68rem;
+        margin-bottom: 8px;
+    }
+
+    .stats-grid {
+        margin-bottom: 16px;
+    }
+
+    .stat-card {
+        padding: 18px;
+        border-radius: 15px;
+    }
+
+    .stat-card strong {
+        font-size: 1.7rem;
+    }
+
+    .progress-card,
+    .task-card,
+    .goal-card,
+    .milestone-card {
+        padding: 18px;
+        margin-bottom: 16px;
+        border-radius: 16px;
+    }
+
+    .progress-header {
+        align-items: flex-start;
+    }
+
+    .progress-header h2 {
+        font-size: 1rem;
+    }
+
+    .section-heading {
+        margin-bottom: 18px;
+    }
+
+    .section-heading h2 {
+        font-size: 1.3rem;
+    }
+
+    .section-description {
+        font-size: 13px;
+    }
+
+    .task-options,
+    .goal-options {
+        gap: 12px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 11px 12px;
+        font-size: 14px;
+    }
+
+    #addTaskBtn,
+    #createGoalBtn,
+    #createMilestoneBtn {
         width: 100%;
+        padding: 13px 18px;
+    }
+
+    .task-actions,
+    .goal-actions,
+    .milestone-actions {
+        width: 100%;
+    }
+
+    .task-item {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .task-content {
+        width: 100%;
+    }
+
+    .delete-btn {
+        align-self: flex-end;
+    }
+
+    .day-option {
+        padding: 7px 9px;
+        font-size: 12px;
+    }
+
+    .goal-item,
+    .milestone-item {
+        padding: 15px;
+    }
+
+    footer {
+        font-size: 0.78rem;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
     }
 }
